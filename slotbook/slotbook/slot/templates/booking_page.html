@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bookingpage</title>
+</head>
+<body>
+<h1>{{user.receipt_no}}</h1>
+<form action="/book/" method="post">
+    {% csrf_token %}
+<input type="text" name="user" value="{{user.receipt_no}}" hidden>
+
+    {% if "CLASH" in events %}
+        <h4>Clash</h4>
+        {% for slot in slots %}
+        <input type="radio" name="clash" value="{{slot.time_slot}}">{{slot.time_slot}}<br>
+        {% endfor %}
+    {% endif %}
+
+    {% if "RC" in events %}
+        <h4>RC</h4>
+        {% for slot in slots %}
+        <input type="radio" name="rc" value="{{slot.time_slot}}">{{slot.time_slot}}<br>
+        {% endfor %}
+    {% endif %}
+
+
+
+    <input type="submit" >
+</form>
+</body>
+</html>

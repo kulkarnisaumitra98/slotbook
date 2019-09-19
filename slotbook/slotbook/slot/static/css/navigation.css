@@ -1,0 +1,204 @@
+/* ===================================
+            Navbar
+=====================================*/
+.navbar {
+  height: 13vh;
+  box-shadow: -5px 2px 15px 1px rgba(0, 0, 0, 0.555);
+}
+.left-part {
+  width: 40vw;
+}
+.logo {
+  height: 100%;
+  width: 6vw;
+  float: left;
+}
+.pict-logo {
+  width: 5vw;
+  height: 10vh;
+}
+.college-name {
+  height: 100%;
+  width: 20vw;
+  font-size: 1.5vw;
+  font-weight: 600;
+  float: left;
+}
+.nav-item {
+  height: 10vh;
+  width: 15vw;
+  float: right;
+  padding: 1vh;
+}
+.nav-item > .btn {
+  width: 14vw;
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.555);
+}
+#mobile-nav-open-btn {
+  display: none;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.underline {
+  text-decoration: underline;
+}
+
+/* ===================================
+              main
+  =====================================*/
+#main {
+  height: 87vh;
+  background: whitesmoke;
+}
+
+.content-section {
+  height: 100%;
+  width: 83vw;
+  padding: 2vh 2vw;
+  /* border: 1px solid red; */
+  float: left;
+}
+
+/* ===========================
+          side-bar menu
+=============================*/
+.side-menu {
+  z-index: 1;
+  height: 100%;
+  width: 15vw;
+  float: left;
+  background: white;
+  box-shadow: -5px 20px 15px 5px rgba(0, 0, 0, 0.555);
+}
+.user {
+  height: 30vh;
+  padding: 5vh 0;
+  display: flex;
+  justify-content: center;
+}
+.user-logo {
+  height: 20vh;
+  width: 20vh;
+  font-size: 6vw;
+  border-radius: 50%;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.555);
+  color: rgb(0, 132, 255);
+  background: whitesmoke;
+}
+.menu {
+  height: 100%;
+
+  padding: 3vh 0;
+}
+.menu-item {
+  height: 6vh;
+}
+.menu-btn {
+  height: 100%;
+  padding: 1vh 0;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.3vw;
+}
+.menu-btn-logo {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  padding: 1vh 0;
+  float: left;
+}
+.menu-btn-content {
+  width: 80%;
+  float: left;
+}
+.menu-btn:hover,
+.active {
+  background: rgb(230, 230, 230);
+  color: rgb(0, 132, 255);
+}
+
+@media only screen and (max-width: 480px) {
+  .navbar {
+    height: 10vh;
+    box-shadow: -5px 2px 15px 1px rgba(0, 0, 0, 0.555);
+  }
+  .left-part {
+    width: 70vw;
+  }
+  .logo {
+    height: 100%;
+    width: 18vw;
+  }
+  .pict-logo {
+    width: 15vw;
+    height: 8vh;
+  }
+  #mobile-nav-open-btn {
+    display: block;
+    width: 15vw;
+    padding: 1vh 2vw;
+    font-size: 7vw;
+    margin-right: 2vw;
+  }
+  .college-name {
+    width: 50vw;
+    font-size: 4vw;
+    font-weight: 650;
+  }
+  .nav-item {
+    display: none;
+  }
+
+  /* ===================================
+                main
+    =====================================*/
+  #main {
+    height: 100vh;
+    background: whitesmoke;
+    /* border: 1px solid black; */
+    z-index: -1;
+  }
+
+  .content-section {
+    height: 100%;
+    overflow-y: hidden;
+    width: 100vw;
+    padding: 2vh 2vw;
+    position: absolute;
+    /* top: 8vh; */
+    float: left;
+    z-index: 0;
+  }
+
+  /* ===========================
+            side-bar menu
+  =============================*/
+  .side-menu {
+    position: relative;
+    height: 100vh;
+    z-index: 1;
+    width: 50vw;
+    float: right;
+    /* border: 1px solid red; */
+    animation: fadeOutRight 0.5s ease forwards;
+    /* display: none; */
+  }
+  .side-menu-show {
+    display: block;
+    animation: fadeInRight 0.5s ease forwards;
+  }
+  .user {
+    height: 20vh;
+  }
+  .user-logo {
+    height: 30vw;
+    width: 30vw;
+    font-size: 15vw;
+  }
+
+  .menu-btn {
+    font-size: 4vw;
+  }
+}

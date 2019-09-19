@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Login</title>
+
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+
+    <link href='{% static "css/bootstrap.css" %}' rel="stylesheet" />
+
+    <link href='{% static "css/font-awesome.css" %}' rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <section id="navigation">
+        <div class="navbar fixed-top">
+          <div class="left col-lg-4">
+            <div class="logoHeader">
+              <!-- <h3>Event Time Slot Booking</h3> -->
+              <img
+                src= '{% static "./img/Horizontal Black Text Without Shadow.png" %}'
+                class="credenz-logo-nav"
+              />
+            </div>
+          </div>
+          <div class="right col-lg-8">
+            <div class="drop create">
+              <img src= '{% static "./img/logopisb2.png" class="pisblogo" %}' />
+            </div>
+            <!-- <div class="drop signup"></div> -->
+          </div>
+        </div>
+      </section>
+      <section id="mainBody">
+        <div class="main row col-lg-7 col-sm-10">
+          <section id="signup">
+            <div class="logo text-center">
+              <i class="fa fa-user-circle"></i>
+            </div>
+            <form method="post" action="">
+
+              <div class="form-group text-center">
+                <input type="text" id="reg_id" name="reg_id" placeholder="Credenz Reciept No." />
+              </div>
+              <div class="form-group text-center ">
+                <div class="email">
+                  <input id="email" name="email" type="email" placeholder="E-mail Id" required />
+                </div>
+              </div>
+              {% csrf_token %}
+              <div class="form-group text-center">
+                <div class="submit">
+                  <button type="submit" class="btn btn-primary create1 ">
+                    Login
+                  </button>
+                </div>
+              </div>
+            </form>
+          </section>
+          <section id="login">
+            <img
+              src= '{% static "./img/Vertical Black Text With Shadow.png" %}'
+              class="credenz-logo"
+            />
+          </section>
+        </div>
+      </section>
+    </div>
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+      if("{{msg}}" !== "") {
+        alert("{{msg}}");
+      }
+   })
+  </script>
+  </body>
+</html>

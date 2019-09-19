@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+  <head>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!--    <script src="/js/my.js"></script>-->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link href='{% static "css/bootstrap.min.css" %}' rel="stylesheet" />
+
+    <link href='{% static "css/font-awesome.css" %}' rel="stylesheet" />
+
+    <link href='{% static "css/animate.min.css" %}' rel="stylesheet" />
+
+    <link href='{% static "css/login.css" %}' rel="stylesheet" />
+
+    <link href='{% static "css/student-upload.css" %}' rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <section id="navigation">
+        <div class="navbar fixed-top">
+          <div class="left col-lg-4">
+            <div class="logoHeader">
+              <!-- <h3>Event Time Slot Booking</h3> -->
+              <img
+                src='{% static "./img/Horizontal Black Text Without Shadow.png" %}'
+                class="credenz-logo-nav"
+              />
+            </div>
+          </div>
+          <div class="right col-lg-8">
+            <div class="drop create">
+              <img src= '{% static "./img/logopisb2.png" %}' class="pisblogo" />
+            </div>
+            <!-- <div class="drop signup"></div> -->
+          </div>
+        </div>
+      </section>
+      <section id="main">
+        <section class="content-section">
+          <div class="content">
+            <div class="upload-head text-center">
+              <h2>Book Your Slot</h2>
+            </div>
+            <div class="file-upload-logo text-center">
+                <div class="col">
+
+                    <div class="row">
+                          <img src='{% static "./img/clash.png" %}' class="event-block" title="C/lash" />
+                        <img src='{% static "./img/rc.png" %}' class="event-block" title="Reverse Coding"/>
+                          <img src='{% static "./img/web.png" %}' class="event-block" title="WebWeaver" />
+                          <img src='{% static "./img/xodia.png" %}' class="event-block" title="Xodia" />
+                         
+                    </div>
+                    <div class="row">
+                          <img src='{% static "./img/stockwhite.png" %}' class="event-block" title="WallStreet" />
+                          <img src='{% static "./img/pixelate.png" %}' class="event-block" title="Pixelate" />
+                          <img src='{% static "./img/quiz.png" %}' class="event-block" title="Quiz" />
+                          <img src='{% static "./img/bplan.png" %}' class="event-block" title="Business Plan" />
+                    </div>
+                   <div class="row">
+                          <img src='{% static "./img/contraption.png" %}' class="event-block" title="Contraption" />
+                          <img src='{% static "./img/cretronix.png" %}' class="event-block" title="Cretronix" />
+                          <img src='{% static "./img/datawiz.png" %}' class="event-block" title="Datawiz" />
+                          <img src='{% static "./img/enigma.png" %}' class="event-block" title="Enigma" />
+                   </div>
+                    <div class="row">
+                          <img src='{% static "./img/nth.png" %}' class="event-block" title="Network Treasure Hunt" />
+                          <img src='{% static "./img/paper.png" %}' class="event-block" title="Paper Presentaion" />
+                          <img src='{% static "./img/roboliga.png" %}' class="event-block" title="Roboliga" />
+                         
+                    </div>
+                </div>
+            </div>
+            <div class="form-div">
+              <form  action="{% url 'booking' %}" method="post" >
+                  {% csrf_token %}
+                  <input type="text" name="user" value="{{user.receipt_no}}" hidden>
+                  <input type="text" name="events" value="{{events}}" hidden>
+
+<!--                  <script>-->
+<!--                        $(document).ready(function(){-->
+<!--                            $("#cate").change(function(){-->
+<!--                                if($(this).val() == "CLASH" || $(this).val() == "REVERSE CODING"){-->
+<!--                                    $('#other1').show();-->
+<!--                                    $('#cate1').attr('required','');-->
+<!--                                    $('#cate1').attr('data-error', 'This field is required.');-->
+<!--                                }else{-->
+<!--                                    $('#other1').hide();-->
+<!--                                    $('#cate1').removeAttr('required');-->
+<!--                                    $('#cate1').removeAttr('data-error');-->
+<!--                                }-->
+<!--                            });-->
+<!--                            $("#cate").trigger("change");-->
+
+<!--                            $("#cate").change(function(){-->
+<!--                                if($(this).val() == "ENIGMA"){-->
+<!--                                    $('#other2').show();-->
+<!--                                    $('#cate2').attr('required','');-->
+<!--                                    $('#cate2').attr('data-error', 'This field is required.');-->
+<!--                                }else{-->
+<!--                                    $('#other2').hide();-->
+<!--                                    $('#cate2').removeAttr('required');-->
+<!--                                    $('#cate2').removeAttr('data-error');-->
+<!--                                }-->
+<!--                            });-->
+<!--                            $("#cate").trigger("change");-->
+<!--                        }-->
+<!--                        );-->
+<!--                  </script>-->
+
+                <div class="form-group" id="same">
+                  <label class="form-control-label">Select Event</label>
+                  <select name="category" id="cate" class="form-control" onchange="changeOptionList()">
+                      <option value="#">-- Select Available Events --</option>
+                      {% for e in events %}
+                        <option value="{{e}}">{{e}}</option>
+                      {% endfor %}
+                  </select>
+                  <!--<small id="event-error" class="alert">s5dr6ft7gy8huji</small>-->
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label">Select Day</label>
+                  <select name="daycat" id="category" class="form-control" onchange="changeOptionList()">
+                    <option value="#">-- Select Day --</option>
+                    <option value="Friday 20/9/19">Friday 20/9/19</option>
+                    <option value="Saturday 21/9/19">Saturday 21/9/19</option>
+                  </select>
+                  <small id="day-error"></small>
+                </div>
+                <div class="form-group" id="other1">
+                  <label class="form-control-label">Select Time Slot</label>
+                  <select name="timecat" id="cate1" class="form-control" >
+                    <option value="#">-- Select Time Slot --</option>
+                    <option value="9:30AM to 10:00AM">9:30AM to 10:00AM</option>
+                    <option value="10:00AM to 10:30AM">10:00AM to 10:30AM</option>
+                    <option value="10:30AM to 11:00AM">10:30AM to 11:00AM</option>
+                    <option value="11:00AM to 11:30AM">11:00AM to 11:30AM</option>
+                    <option value="11:30AM to 12:00AM">11:30AM to 12:00AM</option>
+                    <option value="12:00AM to 12:30AM">12:00AM to 12:30AM</option>
+                    <option value="12:30PM to 1:00PM">12:30PM to 1:00PM</option>
+                    <option value="1:00PM to 1:30PM">1:00PM to 1:30PM</option>
+                    <option value="1:30PM to 2:00PM">1:30PM to 2:00PM</option>
+                    <option value="2:00PM to 2:30PM">2:00PM to 2:30PM</option>
+                    <option value="2:30PM to 3:00PM">2:30PM to 3:00PM</option>
+                    <option value="3:00PM to 3:30PM">3:00PM to 3:30PM</option>
+                    <option value="3:30PM to 4:00PM">3:30PM to 4:00PM</option>
+                    <option value="4:00PM to 4:30PM">4:00PM to 4:30PM</option>
+                    <option value="4:30PM to 5:00PM">4:30PM to 5:00PM</option>
+                    <option value="5:00PM to 6:00PM">5:00PM to 6:00PM</option>
+                    <option value="6:00PM to 6:30PM">6:00PM to 6:30PM</option>
+                  </select>
+                  <small id="slot-error1"></small>
+                </div>
+
+                <div class="form-group" id="other2">
+                  <label class="form-control-label">Select Time Slot</label>
+                  <select name="timecat" id="cate2" class="form-control">
+                    <option value="#">-- Select Time Slot --</option>
+                    <option value="9:30AM to 10:00AM">9:30AM to 10:00AM</option>
+                    <option value="10:00AM to 10:30AM">10:00AM to 10:30AM</option>
+                    <option value="10:30AM to 11:00AM">10:30AM to 11:00AM</option>
+                    <option value="11:00AM to 11:30AM">11:00AM to 11:30AM</option>
+                    <option value="11:30AM to 12:00AM">11:30AM to 12:00AM</option>
+                    <option value="12:00AM to 12:30AM">12:00AM to 12:30AM</option>
+                    <option value="12:30PM to 1:00PM">12:30PM to 1:00PM</option>
+                    <option value="1:00PM to 1:30PM">1:00PM to 1:30PM</option>
+                    <option value="1:30PM to 2:00PM">1:30PM to 2:00PM</option>
+                    <option value="2:00PM to 2:30PM">2:00PM to 2:30PM</option>
+                    <option value="2:30PM to 3:00PM">2:30PM to 3:00PM</option>
+                    <option value="3:00PM to 3:30PM">3:00PM to 3:30PM</option>
+                    <option value="3:30PM to 4:00PM">3:30PM to 4:00PM</option>
+                    <option value="4:00PM to 4:30PM">4:00PM to 4:30PM</option>
+                    <option value="4:30PM to 5:00PM">4:30PM to 5:00PM</option>
+                    <option value="5:00PM to 6:00PM">5:00PM to 6:00PM</option>
+                    <option value="6:00PM to 6:30PM">6:00PM to 6:30PM</option>
+                  </select>
+                  <small id="slot-error2"></small>
+                </div>
+
+                <div class="form-group text-center" id="submit">
+                  <button  type ="submit" class="btn btn-success" id="submit_btn">
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+      </section>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if("{{msg}}" !== "") {
+                alert("{{msg}}");
+            }
+
+        })
+
+        function changeOptionList() {
+            $.ajax({
+                    url : '{% url 'change' %}',
+                    method: "POST",
+                    dataType : "json",
+                    data : { 'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val(),
+                             'event' :$("#cate :selected").text(), // The text content of the selected option
+                             'day' :$("#category :selected").text(), // The text content of the selected option
+
+                           },
+
+                    success : function (data) {
+                       console.log("aaie cha bhok", data)
+                    }
+                });
+        }
+  </script>
+  </body>
+</html>
